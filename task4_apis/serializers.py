@@ -100,11 +100,4 @@ class LeaveApplicationSerializer(serializers.ModelSerializer):
         leaveApplication.save()
 
         return leaveApplication
-    
-    def update(self, instance, validated_data):
-        instance = instance(**validated_data)
-
-        instance.save()
-
-        return instance
         

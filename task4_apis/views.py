@@ -81,9 +81,10 @@ class LeaveApplicationAPI(GenericAPIView,CreateModelMixin,UpdateModelMixin):
         year = request.POST.get('year')
         print("Reached Here")
         leaveApplication = LeaveApplication.objects.get(employeeId = employeeId,month=month,year=year)
+        print(leaveApplication)
 
         print("Reached Here also")
-        serializer = LeaveApplicationSerializer(data=data)
+        serializer = LeaveApplicationSerializer(instance=leaveApplication,data=data,partial=True)
         serializer.is_valid(raise_exception=True)
         serializer.save()
         print("Reached here now")
